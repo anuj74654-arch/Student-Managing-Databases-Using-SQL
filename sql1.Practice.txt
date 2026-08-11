@@ -1,0 +1,494 @@
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| angular             |
+| companydb           |
+| controller          |
+| customerdb          |
+| datas               |
+| empdb               |
+| information_schema  |
+| mysql               |
+| order_details       |
+| performance_schema  |
+| pizzahut            |
+| playstore           |
+| railway_system      |
+| sprint              |
+| sys                 |
+| tables              |
+| userdb              |
+| usermicroservice_db |
++---------------------+
+18 rows in set (0.02 sec)
+
+mysql> use datas;
+Database changed
+mysql> select * from Interests;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT * FROM Interests where Category="Technology";
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT User_Name, Interest_Name FROM Interests where Level="High";
++-----------+---------------+
+| User_Name | Interest_Name |
++-----------+---------------+
+| Anuj      | Cricket       |
+| Rahul     | AI Research   |
+| Sneha     | Painting      |
+| Amit      | Gym Workout   |
+| Meena     | Singing       |
++-----------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests where Hours_Per_Week > 7;
++-------------+-----------+------------+---------------+-------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name | Level | Hours_Per_Week | City      |
++-------------+-----------+------------+---------------+-------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket       | High  |              8 | Delhi     |
+|           3 | Rahul     | Technology | AI Research   | High  |             12 | Bengaluru |
+|           7 | Amit      | Fitness    | Gym Workout   | High  |             10 | Delhi     |
+|          10 | Meena     | Music      | Singing       | High  |              9 | Ahemdabad |
++-------------+-----------+------------+---------------+-------+----------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests where City="Delhi" OR City="Munbai";
++-------------+-----------+----------+---------------+-------+----------------+-------+
+| Interest_id | User_Name | Category | Interest_Name | Level | Hours_Per_Week | City  |
++-------------+-----------+----------+---------------+-------+----------------+-------+
+|           1 | Anuj      | Sports   | Cricket       | High  |              8 | Delhi |
+|           7 | Amit      | Fitness  | Gym Workout   | High  |             10 | Delhi |
++-------------+-----------+----------+---------------+-------+----------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests where City="Delhi" OR City="Mumbai";
++-------------+-----------+----------+---------------+--------+----------------+--------+
+| Interest_id | User_Name | Category | Interest_Name | Level  | Hours_Per_Week | City   |
++-------------+-----------+----------+---------------+--------+----------------+--------+
+|           1 | Anuj      | Sports   | Cricket       | High   |              8 | Delhi  |
+|           2 | Priya     | Music    | Guitar        | Medium |              5 | Mumbai |
+|           7 | Amit      | Fitness  | Gym Workout   | High   |             10 | Delhi  |
++-------------+-----------+----------+---------------+--------+----------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT User_Name FROM Interests where Hours_Per_Week ORDER BY DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+mysql> SELECT User_Name,Hours_Per_Week FROM Interests where Hours_Per_Week ORDER BY DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+mysql> SELECT User_Name,Hours_Per_Week FROM Interests ORDER BY Hours_Per_Week  DESC;
++-----------+----------------+
+| User_Name | Hours_Per_Week |
++-----------+----------------+
+| Rahul     |             12 |
+| Amit      |             10 |
+| Meena     |              9 |
+| Anuj      |              8 |
+| Sneha     |              7 |
+| Kavita    |              7 |
+| Rohan     |              6 |
+| Priya     |              5 |
+| Neha      |              4 |
+| Rajesh    |              2 |
++-----------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests ORDER BY Hours_Per_Week DESC;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT User_Name FROM Interests ORDER BY Hours_Per_Week DESC;
++-----------+
+| User_Name |
++-----------+
+| Rahul     |
+| Amit      |
+| Meena     |
+| Anuj      |
+| Sneha     |
+| Kavita    |
+| Rohan     |
+| Priya     |
+| Neha      |
+| Rajesh    |
++-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT User_Name FROM Interests WHERE Level="Medium" ORDER BY User_Name DESC;
++-----------+
+| User_Name |
++-----------+
+| Rohan     |
+| Priya     |
+| Neha      |
+| Kavita    |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT User_Name FROM Interests WHERE Level="Medium" ORDER BY User_Name ASC;
++-----------+
+| User_Name |
++-----------+
+| Kavita    |
+| Neha      |
+| Priya     |
+| Rohan     |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT User_Name, Hours_Per_Week FROM Interests ORDER BY Hours_Per_Week DESC LIMIT 3;
++-----------+----------------+
+| User_Name | Hours_Per_Week |
++-----------+----------------+
+| Rahul     |             12 |
+| Amit      |             10 |
+| Meena     |              9 |
++-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT User_Name, Max(Hours_Per_Week) AS Maximum Hours_Per_Week FROM Interests ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Hours_Per_Week FROM Interests' at line 1
+mysql> SELECT User_Name, MAX(Hours_Per_Week) AS Maximum Hours_Per_Week FROM Interests ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Hours_Per_Week FROM Interests' at line 1
+mysql> SELECT User_Name, MAX(Hours_Per_Week) AS Maximum Hours_Per_Week FROM Interests ORDER BY User_Name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Hours_Per_Week FROM Interests ORDER BY User_Name' at line 1
+mysql> SELECT User_Name, MAX(Hours_Per_Week) AS Maximum_Hours_Per_Week FROM Interests;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'datas.Interests.User_Name'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT User_Name, MAX(Hours_Per_Week) AS Maximum_Hours_Per_Week FROM Interests GROUP BY User_Name;
++-----------+------------------------+
+| User_Name | Maximum_Hours_Per_Week |
++-----------+------------------------+
+| Anuj      |                      8 |
+| Priya     |                      5 |
+| Rahul     |                     12 |
+| Sneha     |                      7 |
+| Rohan     |                      6 |
+| Neha      |                      4 |
+| Amit      |                     10 |
+| Kavita    |                      7 |
+| Rajesh    |                      2 |
+| Meena     |                      9 |
++-----------+------------------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT User_Name, MAX(Hours_Per_Week) AS Maximum_Hours_Per_Week FROM Interests GROUP BY Hours_Per_Week;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'datas.Interests.User_Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT User_Name, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MAX(Hours_Per_Week) FROM Interests);
++-----------+----------------+
+| User_Name | Hours_Per_Week |
++-----------+----------------+
+| Rahul     |             12 |
++-----------+----------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT User_Name, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MIN(Hours_Per_Week) FROM Interests);
++-----------+----------------+
+| User_Name | Hours_Per_Week |
++-----------+----------------+
+| Rajesh    |              2 |
++-----------+----------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT User_Name,Level FROM Interests WHERE Level = (SELECT COUNT(Level) FROM Interests WHERE Level="High");
+Empty set, 10 warnings (0.00 sec)
+
+mysql> SELECT COUNT(Level) as High_Level FROM Interests WHERE Level="High";
++------------+
+| High_Level |
++------------+
+|          5 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Category, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT AVG(Hours_Per_Week) AS Average_Hours FROM Interests);
++------------+----------------+
+| Category   | Hours_Per_Week |
++------------+----------------+
+| Art        |              7 |
+| Technology |              7 |
++------------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT Category,AVG(Hours_Per_Week) AS Average_Hours FROM Interests;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'datas.Interests.Category'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT Category,AVG(Hours_Per_Week) AS Average_Hours FROM Interests GROUP BY Category;
++------------+---------------+
+| Category   | Average_Hours |
++------------+---------------+
+| Sports     |        8.0000 |
+| Music      |        7.0000 |
+| Technology |        9.5000 |
+| Art        |        7.0000 |
+| Travel     |        6.0000 |
+| Reading    |        4.0000 |
+| Fitness    |       10.0000 |
+| Cooking    |        2.0000 |
++------------+---------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT * FROM Interests;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Category, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MAX(Hours_Per_Week) FROM Interests);
++------------+----------------+
+| Category   | Hours_Per_Week |
++------------+----------------+
+| Technology |             12 |
++------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Category, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MAX(Hours_Per_Week) FROM Interests GROUP BY Category);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> SELECT Category, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MAX(Hours_Per_Week) FROM Interests);
++------------+----------------+
+| Category   | Hours_Per_Week |
++------------+----------------+
+| Technology |             12 |
++------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT City, SUM(Hours_Per_Week) AS Total_Hours FROM Interests;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'datas.Interests.City'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT City, SUM(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY City;
++-----------+-------------+
+| City      | Total_Hours |
++-----------+-------------+
+| Delhi     |          18 |
+| Mumbai    |           5 |
+| Bengaluru |          12 |
+| Jaipur    |           7 |
+| Pune      |           6 |
+| Kolkata   |           4 |
+| Hyderabad |           7 |
+| Chennai   |           2 |
+| Ahemdabad |           9 |
++-----------+-------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(User_Name) as Count_Users FROM Interests GROUP BY Category;
++-------------+
+| Count_Users |
++-------------+
+|           1 |
+|           2 |
+|           2 |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
++-------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT Category,COUNT(User_Name) as Count_Users FROM Interests GROUP BY Category;
++------------+-------------+
+| Category   | Count_Users |
++------------+-------------+
+| Sports     |           1 |
+| Music      |           2 |
+| Technology |           2 |
+| Art        |           1 |
+| Travel     |           1 |
+| Reading    |           1 |
+| Fitness    |           1 |
+| Cooking    |           1 |
++------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT Level,COUNT(User_Name) as Count_Users FROM Interests GROUP BY Level;
++--------+-------------+
+| Level  | Count_Users |
++--------+-------------+
+| High   |           5 |
+| Medium |           4 |
+| Low    |           1 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Category FROM Interests HAVING Houre_Per_Week > 10 GROUP BY Category;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY Category' at line 1
+mysql> SELECT Category FROM Interests GROUP BY Category HAVING Houre_Per_Week > 10;
+ERROR 1054 (42S22): Unknown column 'Houre_Per_Week' in 'having clause'
+mysql> SELECT Category, SUM(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING Hours_Per_Week > 10;
+ERROR 1054 (42S22): Unknown column 'Hours_Per_Week' in 'having clause'
+mysql> SELECT Category, SUM(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING Total_Hours > 10;
++------------+-------------+
+| Category   | Total_Hours |
++------------+-------------+
+| Music      |          14 |
+| Technology |          19 |
++------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT City, COUNT(User_Name) AS Total_Users FROM Interests GROUP BY City HAVING Total_Users > 1;
++-------+-------------+
+| City  | Total_Users |
++-------+-------------+
+| Delhi |           2 |
++-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Interest_Name FROM Interests WHERE Category="Technology";
++-----------------+
+| Interest_Name   |
++-----------------+
+| AI Research     |
+| Web Development |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT User_Name, Avg(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING  Hours_Per_Week > Total_Users;
+ERROR 1054 (42S22): Unknown column 'Hours_Per_Week' in 'having clause'
+mysql> SELECT User_Name, Hours_Per_Week, Avg(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING  Hours_Per_Week > Total_Users;
+ERROR 1054 (42S22): Unknown column 'Total_Users' in 'having clause'
+mysql> SELECT User_Name, Hours_Per_Week, Avg(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING  Hours_Per_Week > Total_Hours;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'datas.Interests.User_Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT User_Name,Category, Hours_Per_Week, Avg(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category HAVING  Hours_Per_Week > Total_Hours;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'datas.Interests.User_Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT User_Name,Category, Hours_Per_Week, Avg(Hours_Per_Week) AS Total_Hours FROM Interests GROUP BY Category WHERE  Hours_Per_Week > Total_Hours;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE  Hours_Per_Week > Total_Hours' at line 1
+mysql> SELECT User_Name,Category, Hours_Per_Week  WHERE Hours_Per_Week > (SELECT Avg(Hours_Per_Week) FROM Interests);
+ERROR 1054 (42S22): Unknown column 'User_Name' in 'field list'
+mysql> SELECT User_Name,Category, Hours_Per_Week FROM Interests WHERE Hours_Per_Week > (SELECT Avg(Hours_Per_Week) FROM Interests);
++-----------+------------+----------------+
+| User_Name | Category   | Hours_Per_Week |
++-----------+------------+----------------+
+| Anuj      | Sports     |              8 |
+| Rahul     | Technology |             12 |
+| Amit      | Fitness    |             10 |
+| Meena     | Music      |              9 |
++-----------+------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Interests;
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | User_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj      | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya     | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul     | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha     | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan     | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha      | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit      | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita    | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh    | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena     | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+-----------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT User_Name, Hours_Per_Week FROM Interests WHERE Hours_Per_Week = (SELECT MAX(Hours_Per_Week) FROM Interests);
++-----------+----------------+
+| User_Name | Hours_Per_Week |
++-----------+----------------+
+| Rahul     |             12 |
++-----------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT User_Name FROM Interests WHERE User_Name LIKE 'R%';
++-----------+
+| User_Name |
++-----------+
+| Rahul     |
+| Rohan     |
+| Rajesh    |
++-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Interest_Name FROM Interests WHERE Interest_Name LIKE '%i%';
++---------------+
+| Interest_Name |
++---------------+
+| Cricket       |
+| Guitar        |
+| AI Research   |
+| Painting      |
+| Trekking      |
+| Baking        |
+| Singing       |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql>
