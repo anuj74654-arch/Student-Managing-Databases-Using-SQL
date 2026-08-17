@@ -1,0 +1,823 @@
+LIKE
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "A%";
++--------------+
+| Student_Name |
++--------------+
+| Anuj         |
+| Amit         |
++--------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "R%";
++--------------+
+| Student_Name |
++--------------+
+| Rahul        |
+| Rohan        |
+| Rajesh       |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "%a";
++--------------+
+| Student_Name |
++--------------+
+| Priya        |
+| Sneha        |
+| Neha         |
+| Kavita       |
+| Meena        |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "%a%";
++--------------+
+| Student_Name |
++--------------+
+| Anuj         |
+| Priya        |
+| Rahul        |
+| Sneha        |
+| Rohan        |
+| Neha         |
+| Amit         |
+| Kavita       |
+| Rajesh       |
+| Meena        |
++--------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests where BINARY Student_Name LIKE "%a%";
++--------------+
+| Student_Name |
++--------------+
+| Priya        |
+| Rahul        |
+| Sneha        |
+| Rohan        |
+| Neha         |
+| Kavita       |
+| Rajesh       |
+| Meena        |
++--------------+
+8 rows in set, 1 warning (0.01 sec)
+
+mysql> SELECT Student_Name from Interests where BINARY Student_Name LIKE "%i%";
++--------------+
+| Student_Name |
++--------------+
+| Priya        |
+| Amit         |
+| Kavita       |
++--------------+
+3 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT Interest_Name from Interests where Interest_Name LIKE "G%";
++---------------+
+| Interest_Name |
++---------------+
+| Guitar        |
+| Gym Workout   |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT Interest_Name from Interests where BINARY Interest_Name LIKE "%g";
++---------------+
+| Interest_Name |
++---------------+
+| Painting      |
+| Trekking      |
+| Baking        |
+| Singing       |
++---------------+
+4 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT City from Interests where City LIKE "D%";
++-------+
+| City  |
++-------+
+| Delhi |
+| Delhi |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT City from Interests where BINARY City LIKE "%a%";
++-----------+
+| City      |
++-----------+
+| Mumbai    |
+| Bengaluru |
+| Jaipur    |
+| Kolkata   |
+| Hyderabad |
+| Chennai   |
+| Ahemdabad |
++-----------+
+7 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT Category from Interests where Category LIKE "%Tech%";
++------------+
+| Category   |
++------------+
+| Technology |
+| Technology |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "____";
++--------------+
+| Student_Name |
++--------------+
+| Anuj         |
+| Neha         |
+| Amit         |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests where Student_Name LIKE "_____";
++--------------+
+| Student_Name |
++--------------+
+| Priya        |
+| Rahul        |
+| Sneha        |
+| Rohan        |
+| Meena        |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Interest_Name from Interests where BINARY Interest_Name LIKE "%e%";
++-----------------+
+| Interest_Name   |
++-----------------+
+| Cricket         |
+| AI Research     |
+| Trekking        |
+| Novels          |
+| Web Development |
++-----------------+
+5 rows in set, 1 warning (0.00 sec)
+
+ORDER BY
+
+mysql> SELECT Hours_Per_Week from Interests ORDER BY Hours_Per_Week ASC;
++----------------+
+| Hours_Per_Week |
++----------------+
+|              2 |
+|              4 |
+|              5 |
+|              6 |
+|              7 |
+|              7 |
+|              8 |
+|              9 |
+|             10 |
+|             12 |
++----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Hours_Per_Week from Interests ORDER BY Hours_Per_Week DESC;
++----------------+
+| Hours_Per_Week |
++----------------+
+|             12 |
+|             10 |
+|              9 |
+|              8 |
+|              7 |
+|              7 |
+|              6 |
+|              5 |
+|              4 |
+|              2 |
++----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name from Interests ORDER BY Student_Name ASC;
++--------------+
+| Student_Name |
++--------------+
+| Amit         |
+| Anuj         |
+| Kavita       |
+| Meena        |
+| Neha         |
+| Priya        |
+| Rahul        |
+| Rajesh       |
+| Rohan        |
+| Sneha        |
++--------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT Student_Name from Interests ORDER BY Student_Name DESC;
++--------------+
+| Student_Name |
++--------------+
+| Sneha        |
+| Rohan        |
+| Rajesh       |
+| Rahul        |
+| Priya        |
+| Neha         |
+| Meena        |
+| Kavita       |
+| Anuj         |
+| Amit         |
++--------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT City from Interests ORDER BY City ASC;
++-----------+
+| City      |
++-----------+
+| Ahemdabad |
+| Bengaluru |
+| Chennai   |
+| Delhi     |
+| Delhi     |
+| Hyderabad |
+| Jaipur    |
+| Kolkata   |
+| Mumbai    |
+| Pune      |
++-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Interest_id from Interests ORDER BY Interest_id DESC;
++-------------+
+| Interest_id |
++-------------+
+|          10 |
+|           9 |
+|           8 |
+|           7 |
+|           6 |
+|           5 |
+|           4 |
+|           3 |
+|           2 |
+|           1 |
++-------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name,Level from Interests ORDER BY FIELD(Level,'High','Medium','Low');
++--------------+--------+
+| Student_Name | Level  |
++--------------+--------+
+| Anuj         | High   |
+| Rahul        | High   |
+| Sneha        | High   |
+| Amit         | High   |
+| Meena        | High   |
+| Priya        | Medium |
+| Rohan        | Medium |
+| Neha         | Medium |
+| Kavita       | Medium |
+| Rajesh       | Low    |
++--------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Student_Name,Level from Interests ORDER BY FIELD(Level,'Low','Medium','High');
++--------------+--------+
+| Student_Name | Level  |
++--------------+--------+
+| Rajesh       | Low    |
+| Priya        | Medium |
+| Rohan        | Medium |
+| Neha         | Medium |
+| Kavita       | Medium |
+| Anuj         | High   |
+| Rahul        | High   |
+| Sneha        | High   |
+| Amit         | High   |
+| Meena        | High   |
++--------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Category,Hours_Per_Week from Interests ORDER BY Category,Hours_Per_Week;
++------------+----------------+
+| Category   | Hours_Per_Week |
++------------+----------------+
+| Art        |              7 |
+| Cooking    |              2 |
+| Fitness    |             10 |
+| Music      |              5 |
+| Music      |              9 |
+| Reading    |              4 |
+| Sports     |              8 |
+| Technology |              7 |
+| Technology |             12 |
+| Travel     |              6 |
++------------+----------------+
+10 rows in set (0.00 sec)
+
+Same Output as Above 
+mysql> SELECT Category,Hours_Per_Week from Interests ORDER BY Category ASC,Hours_Per_Week ASC;
++------------+----------------+
+| Category   | Hours_Per_Week |
++------------+----------------+
+| Art        |              7 |
+| Cooking    |              2 |
+| Fitness    |             10 |
+| Music      |              5 |
+| Music      |              9 |
+| Reading    |              4 |
+| Sports     |              8 |
+| Technology |              7 |
+| Technology |             12 |
+| Travel     |              6 |
++------------+----------------+
+
+mysql> SELECT Student_Name,Level from Interests ORDER BY Level ASC,Student_Name ASC;
++--------------+--------+
+| Student_Name | Level  |
++--------------+--------+
+| Amit         | High   |
+| Anuj         | High   |
+| Meena        | High   |
+| Rahul        | High   |
+| Sneha        | High   |
+| Rajesh       | Low    |
+| Kavita       | Medium |
+| Neha         | Medium |
+| Priya        | Medium |
+| Rohan        | Medium |
++--------------+--------+
+10 rows in set (0.00 sec)
+
+Aggregrate Function
+
+mysql> SELECT count(Student_Name) from Interests;
++---------------------+
+| count(Student_Name) |
++---------------------+
+|                  10 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT count(Hours_Per_Week) from Interests;
++-----------------------+
+| count(Hours_Per_Week) |
++-----------------------+
+|                    10 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT sum(Hours_Per_Week) from Interests;
++---------------------+
+| sum(Hours_Per_Week) |
++---------------------+
+|                  70 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT avg(Hours_Per_Week) from Interests;
++---------------------+
+| avg(Hours_Per_Week) |
++---------------------+
+|              7.0000 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT max(Hours_Per_Week) from Interests;
++---------------------+
+| max(Hours_Per_Week) |
++---------------------+
+|                  12 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT min(Hours_Per_Week) from Interests;
++---------------------+
+| min(Hours_Per_Week) |
++---------------------+
+|                   2 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT max(Hours_Per_Week) - min(Hours_Per_Week) from Interests;
++-------------------------------------------+
+| max(Hours_Per_Week) - min(Hours_Per_Week) |
++-------------------------------------------+
+|                                        10 |
++-------------------------------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT City,Count(*) from Interests where City="Delhi";
++-------+----------+
+| City  | Count(*) |
++-------+----------+
+| Delhi |        2 |
++-------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT City,Count(*) AS TOTAL_Student from Interests GROUP BY City;
++-----------+---------------+
+| City      | TOTAL_Student |
++-----------+---------------+
+| Delhi     |             2 |
+| Mumbai    |             1 |
+| Bengaluru |             1 |
+| Jaipur    |             1 |
+| Pune      |             1 |
+| Kolkata   |             1 |
+| Hyderabad |             1 |
+| Chennai   |             1 |
+| Ahemdabad |             1 |
++-----------+---------------+
+9 rows in set (0.02 sec)
+
+mysql> SELECT Category,Count(*) AS TOTAL_Student from Interests GROUP BY Category;
++------------+---------------+
+| Category   | TOTAL_Student |
++------------+---------------+
+| Sports     |             1 |
+| Music      |             2 |
+| Technology |             2 |
+| Art        |             1 |
+| Travel     |             1 |
+| Reading    |             1 |
+| Fitness    |             1 |
+| Cooking    |             1 |
++------------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT Level,Count(*) AS TOTAL_Student from Interests GROUP BY Level;
++--------+---------------+
+| Level  | TOTAL_Student |
++--------+---------------+
+| High   |             5 |
+| Medium |             4 |
+| Low    |             1 |
++--------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT avg(Hours_Per_Week) from Interests where Category="Technology";
++---------------------+
+| avg(Hours_Per_Week) |
++---------------------+
+|              9.5000 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT max(Hours_Per_Week) from Interests where Category="Music";
++---------------------+
+| max(Hours_Per_Week) |
++---------------------+
+|                   9 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT min(Hours_Per_Week) from Interests where Category="Technology";
++---------------------+
+| min(Hours_Per_Week) |
++---------------------+
+|                   7 |
++---------------------+
+1 row in set (0.00 sec)
+
+GROUP BY
+
+mysql> SELECT Category,Count(*) AS TOTAL_Student from Interests GROUP BY Category;
++------------+---------------+
+| Category   | TOTAL_Student |
++------------+---------------+
+| Sports     |             1 |
+| Music      |             2 |
+| Technology |             2 |
+| Art        |             1 |
+| Travel     |             1 |
+| Reading    |             1 |
+| Fitness    |             1 |
+| Cooking    |             1 |
++------------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT avg(Hours_Per_Week) from Interests GROUP BY Category;
++---------------------+
+| avg(Hours_Per_Week) |
++---------------------+
+|              8.0000 |
+|              7.0000 |
+|              9.5000 |
+|              7.0000 |
+|              6.0000 |
+|              4.0000 |
+|             10.0000 |
+|              2.0000 |
++---------------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT max(Hours_Per_Week) from Interests GROUP BY Category;
++---------------------+
+| max(Hours_Per_Week) |
++---------------------+
+|                   8 |
+|                   9 |
+|                  12 |
+|                   7 |
+|                   6 |
+|                   4 |
+|                  10 |
+|                   2 |
++---------------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT min(Hours_Per_Week) from Interests GROUP BY Category;
++---------------------+
+| min(Hours_Per_Week) |
++---------------------+
+|                   8 |
+|                   5 |
+|                   7 |
+|                   7 |
+|                   6 |
+|                   4 |
+|                  10 |
+|                   2 |
++---------------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT sum(Hours_Per_Week) from Interests GROUP BY Category;
++---------------------+
+| sum(Hours_Per_Week) |
++---------------------+
+|                   8 |
+|                  14 |
+|                  19 |
+|                   7 |
+|                   6 |
+|                   4 |
+|                  10 |
+|                   2 |
++---------------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT avg(Hours_Per_Week) from Interests GROUP BY City;
++---------------------+
+| avg(Hours_Per_Week) |
++---------------------+
+|              9.0000 |
+|              5.0000 |
+|             12.0000 |
+|              7.0000 |
+|              6.0000 |
+|              4.0000 |
+|              7.0000 |
+|              2.0000 |
+|              9.0000 |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT sum(Hours_Per_Week) from Interests GROUP BY City;
++---------------------+
+| sum(Hours_Per_Week) |
++---------------------+
+|                  18 |
+|                   5 |
+|                  12 |
+|                   7 |
+|                   6 |
+|                   4 |
+|                   7 |
+|                   2 |
+|                   9 |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT Category,count(Level) from Interests where Level="High" GROUP BY Category;
++------------+--------------+
+| Category   | count(Level) |
++------------+--------------+
+| Sports     |            1 |
+| Technology |            1 |
+| Art        |            1 |
+| Fitness    |            1 |
+| Music      |            1 |
++------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Category,Level,Count(*) AS Total_Student from Interests GROUP BY Category,Level;
++------------+--------+---------------+
+| Category   | Level  | Total_Student |
++------------+--------+---------------+
+| Sports     | High   |             1 |
+| Music      | Medium |             1 |
+| Technology | High   |             1 |
+| Art        | High   |             1 |
+| Travel     | Medium |             1 |
+| Reading    | Medium |             1 |
+| Fitness    | High   |             1 |
+| Technology | Medium |             1 |
+| Cooking    | Low    |             1 |
+| Music      | High   |             1 |
++------------+--------+---------------+
+10 rows in set (0.00 sec)
+
+
+HAVING USING QUERY
+
+mysql> SELECT Category,Count(Student_Name) from Interests GROUP BY Category HAVING count(Student_Name)>1;
++------------+---------------------+
+| Category   | Count(Student_Name) |
++------------+---------------------+
+| Music      |                   2 |
+| Technology |                   2 |
++------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT City,Count(Student_Name) from Interests GROUP BY City HAVING count(Student_Name)>1;
++-------+---------------------+
+| City  | Count(Student_Name) |
++-------+---------------------+
+| Delhi |                   2 |
++-------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Category,avg(Hours_Per_Week) from Interests GROUP BY Category HAVING avg(Hours_Per_Week)>7;
++------------+---------------------+
+| Category   | avg(Hours_Per_Week) |
++------------+---------------------+
+| Sports     |              8.0000 |
+| Technology |              9.5000 |
+| Fitness    |             10.0000 |
++------------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Category,sum(Hours_Per_Week) from Interests GROUP BY Category HAVING sum(Hours_Per_Week)>10;
++------------+---------------------+
+| Category   | sum(Hours_Per_Week) |
++------------+---------------------+
+| Music      |                  14 |
+| Technology |                  19 |
++------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT Level,count(Student_Name) from Interests GROUP BY Level HAVING count(Student_Name)>2;
++--------+---------------------+
+| Level  | count(Student_Name) |
++--------+---------------------+
+| High   |                   5 |
+| Medium |                   4 |
++--------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT City,avg(Hours_Per_Week) from Interests GROUP BY City HAVING avg(Hours_Per_Week)>6;
++-----------+---------------------+
+| City      | avg(Hours_Per_Week) |
++-----------+---------------------+
+| Delhi     |              9.0000 |
+| Bengaluru |             12.0000 |
+| Jaipur    |              7.0000 |
+| Hyderabad |              7.0000 |
+| Ahemdabad |              9.0000 |
++-----------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Category,Count(Student_Name) from Interests GROUP BY Category HAVING count(Student_Name)>=2;
++------------+---------------------+
+| Category   | Count(Student_Name) |
++------------+---------------------+
+| Music      |                   2 |
+| Technology |                   2 |
++------------+---------------------+
+2 rows in set (0.00 sec)
+
+
+MAX/MIN
+
+mysql> SELECT Student_Name,Hours_Per_Week from Interests where Hours_Per_week=(select max(Hours_Per_Week) from Interests);
++--------------+----------------+
+| Student_Name | Hours_Per_Week |
++--------------+----------------+
+| Rahul        |             12 |
++--------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,Hours_Per_Week from Interests where Hours_Per_week=(select min(Hours_Per_Week) from Interests);
++--------------+----------------+
+| Student_Name | Hours_Per_Week |
++--------------+----------------+
+| Rajesh       |              2 |
++--------------+----------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> SELECT Student_Name,Hours_Per_Week,Level from Interests where Level="High" AND Hours_Per_week=(select max(Hours_Per_Week) from Interests where Level="High");
++--------------+----------------+-------+
+| Student_Name | Hours_Per_Week | Level |
++--------------+----------------+-------+
+| Rahul        |             12 | High  |
++--------------+----------------+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,Hours_Per_Week,Level from Interests where Level="Medium" AND Hours_Per_week=(select min(Hours_Per_Week) from Interests where Level="Medium");
++--------------+----------------+--------+
+| Student_Name | Hours_Per_Week | Level  |
++--------------+----------------+--------+
+| Neha         |              4 | Medium |
++--------------+----------------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,Category,Hours_Per_Week from Interests where Category="Technology" AND Hours_Per_week=(select max(Hours_Per_Week) from Interests where Category="Technology");
++--------------+------------+----------------+
+| Student_Name | Category   | Hours_Per_Week |
++--------------+------------+----------------+
+| Rahul        | Technology |             12 |
++--------------+------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,Category,Hours_Per_Week from Interests where Category="Music" AND Hours_Per_week=(select min(Hours_Per_Week) from Interests where Category="Music");
++--------------+----------+----------------+
+| Student_Name | Category | Hours_Per_Week |
++--------------+----------+----------------+
+| Priya        | Music    |              5 |
++--------------+----------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,City,Hours_Per_Week from Interests where Hours_Per_week=(select max(Hours_Per_Week) from Interests);
++--------------+-----------+----------------+
+| Student_Name | City      | Hours_Per_Week |
++--------------+-----------+----------------+
+| Rahul        | Bengaluru |             12 |
++--------------+-----------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Student_Name,Interest_Name,Hours_Per_Week from Interests where Hours_Per_week=(select max(Hours_Per_Week) from Interests);
++--------------+---------------+----------------+
+| Student_Name | Interest_Name | Hours_Per_Week |
++--------------+---------------+----------------+
+| Rahul        | AI Research   |             12 |
++--------------+---------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Interests;
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | Student_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj         | Sports     | Cricket         | High   |              8 | Delhi     |
+|           2 | Priya        | Music      | Guitar          | Medium |              5 | Mumbai    |
+|           3 | Rahul        | Technology | AI Research     | High   |             12 | Bengaluru |
+|           4 | Sneha        | Art        | Painting        | High   |              7 | Jaipur    |
+|           5 | Rohan        | Travel     | Trekking        | Medium |              6 | Pune      |
+|           6 | Neha         | Reading    | Novels          | Medium |              4 | Kolkata   |
+|           7 | Amit         | Fitness    | Gym Workout     | High   |             10 | Delhi     |
+|           8 | Kavita       | Technology | Web Development | Medium |              7 | Hyderabad |
+|           9 | Rajesh       | Cooking    | Baking          | Low    |              2 | Chennai   |
+|          10 | Meena        | Music      | Singing         | High   |              9 | Ahemdabad |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> UPDATE Interests set City="Mumbai" where Student_Name="Neha";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Interests set Level="High" where Student_Name="Priya";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Interests set Hours_Per_Week=Hours_Per_Week+2 where Student_Name="Rahul";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Interests set City="Raipur" where City="Delhi";
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update Interests set Hours_Per_Week=Hours_Per_Week+1;
+Query OK, 10 rows affected (0.02 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+mysql> update Interests set Hours_Per_Week=Hours_Per_Week+2 where Level="High";
+Query OK, 6 rows affected (0.02 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> SELECT * from Interests;
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | Student_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj         | Sports     | Cricket         | High   |             11 | Raipur    |
+|           2 | Priya        | Music      | Guitar          | High   |              8 | Mumbai    |
+|           3 | Rahul        | Technology | AI Research     | High   |             17 | Bengaluru |
+|           4 | Sneha        | Art        | Painting        | High   |             10 | Jaipur    |
+|           5 | Rohan        | Travel     | Trekking        | Medium |              7 | Pune      |
+|           6 | Neha         | Reading    | Novels          | Medium |              5 | Mumbai    |
+|           7 | Amit         | Fitness    | Gym Workout     | High   |             13 | Raipur    |
+|           8 | Kavita       | Technology | Web Development | Medium |              8 | Hyderabad |
+|           9 | Rajesh       | Cooking    | Baking          | Low    |              3 | Chennai   |
+|          10 | Meena        | Music      | Singing         | High   |             12 | Ahemdabad |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.02 sec)
+
+
+
+
+
+
+
+
+
