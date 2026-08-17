@@ -5,7 +5,7 @@
 
 ➔ Perfom Operations to understand the result and extend my Knowledge regarding MYSQL and SQL .
 
-# TOPIC COVERED
+# Topic Covered
 * SELECT Statements
 * DISTINCT
 * WHERE Conditions
@@ -20,7 +20,6 @@
 * MAX/MIN
 * UPDATE
 * String Functions
-
 
 # Practice Progress
 * 150+ SQL Queries Completed
