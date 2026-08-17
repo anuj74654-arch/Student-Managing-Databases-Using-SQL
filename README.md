@@ -24,7 +24,7 @@
 # Practice Progress
 * 150+ SQL Queries Completed
 * Database: MYSQL
-* Environment MYSQL Command Line
+* Environment: MYSQL Command Line
 * Dataset: Student/Interest Database
 
 # Technologies Used
