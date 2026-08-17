@@ -1,0 +1,157 @@
+mysql> SELECT * from Interests;
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+| Interest_id | Student_Name | Category   | Interest_Name   | Level  | Hours_Per_Week | City      |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+|           1 | Anuj         | Sports     | Cricket         | High   |             11 | Raipur    |
+|           2 | Priya        | Music      | Guitar          | High   |              8 | Mumbai    |
+|           3 | Rahul        | Technology | AI Research     | High   |             17 | Bengaluru |
+|           4 | Sneha        | Art        | Painting        | High   |             10 | Jaipur    |
+|           5 | Rohan        | Travel     | Trekking        | Medium |              7 | Pune      |
+|           6 | Neha         | Reading    | Novels          | Medium |              5 | Mumbai    |
+|           7 | Amit         | Fitness    | Gym Workout     | High   |             13 | Raipur    |
+|           8 | Kavita       | Technology | Web Development | Medium |              8 | Hyderabad |
+|           9 | Rajesh       | Cooking    | Baking          | Low    |              3 | Chennai   |
+|          10 | Meena        | Music      | Singing         | High   |             12 | Ahemdabad |
++-------------+--------------+------------+-----------------+--------+----------------+-----------+
+10 rows in set (0.00 sec)
+
+STRING
+
+mysql> select  upper(Student_Name) from Interests;
++---------------------+
+| upper(Student_Name) |
++---------------------+
+| ANUJ                |
+| PRIYA               |
+| RAHUL               |
+| SNEHA               |
+| ROHAN               |
+| NEHA                |
+| AMIT                |
+| KAVITA              |
+| RAJESH              |
+| MEENA               |
++---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select lower(Student_Name) from Interests;
++---------------------+
+| lower(Student_Name) |
++---------------------+
+| anuj                |
+| priya               |
+| rahul               |
+| sneha               |
+| rohan               |
+| neha                |
+| amit                |
+| kavita              |
+| rajesh              |
+| meena               |
++---------------------+
+10 rows in set (0.01 sec)
+
+mysql> select Student_Name,length(Student_Name) from Interests;
++--------------+----------------------+
+| Student_Name | length(Student_Name) |
++--------------+----------------------+
+| Anuj         |                    4 |
+| Priya        |                    5 |
+| Rahul        |                    5 |
+| Sneha        |                    5 |
+| Rohan        |                    5 |
+| Neha         |                    4 |
+| Amit         |                    4 |
+| Kavita       |                    6 |
+| Rajesh       |                    6 |
+| Meena        |                    5 |
++--------------+----------------------+
+10 rows in set (0.00 sec)
+
+mysql> select Student_Name,length(Student_Name) from Interests where length(Student_Name)>4;
++--------------+----------------------+
+| Student_Name | length(Student_Name) |
++--------------+----------------------+
+| Priya        |                    5 |
+| Rahul        |                    5 |
+| Sneha        |                    5 |
+| Rohan        |                    5 |
+| Kavita       |                    6 |
+| Rajesh       |                    6 |
+| Meena        |                    5 |
++--------------+----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select CONCAT(Student_Name, ' ' ,City) AS Student_City From Interests;
++------------------+
+| Student_City     |
++------------------+
+| Anuj Raipur      |
+| Priya Mumbai     |
+| Rahul Bengaluru  |
+| Sneha Jaipur     |
+| Rohan Pune       |
+| Neha Mumbai      |
+| Amit Raipur      |
+| Kavita Hyderabad |
+| Rajesh Chennai   |
+| Meena Ahemdabad  |
++------------------+
+10 rows in set (0.01 sec)
+
+mysql> select CONCAT(Student_Name, ' is interested in ' ,Interest_Name) AS Sentence From Interests;
++-----------------------------------------+
+| Sentence                                |
++-----------------------------------------+
+| Anuj is interested in Cricket           |
+| Priya is interested in Guitar           |
+| Rahul is interested in AI Research      |
+| Sneha is interested in Painting         |
+| Rohan is interested in Trekking         |
+| Neha is interested in Novels            |
+| Amit is interested in Gym Workout       |
+| Kavita is interested in Web Development |
+| Rajesh is interested in Baking          |
+| Meena is interested in Singing          |
++-----------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select CONCAT(Category, ' ' ,Interest_Name) AS Category_Interest From Interests;
++----------------------------+
+| Category_Interest          |
++----------------------------+
+| Sports Cricket             |
+| Music Guitar               |
+| Technology AI Research     |
+| Art Painting               |
+| Travel Trekking            |
+| Reading Novels             |
+| Fitness Gym Workout        |
+| Technology Web Development |
+| Cooking Baking             |
+| Music Singing              |
++----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select Interest_Name,length(Interest_Name) from Interests;
++-----------------+-----------------------+
+| Interest_Name   | length(Interest_Name) |
++-----------------+-----------------------+
+| Cricket         |                     7 |
+| Guitar          |                     6 |
+| AI Research     |                    11 |
+| Painting        |                     8 |
+| Trekking        |                     8 |
+| Novels          |                     6 |
+| Gym Workout     |                    11 |
+| Web Development |                    15 |
+| Baking          |                     6 |
+| Singing         |                     7 |
++-----------------+-----------------------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
