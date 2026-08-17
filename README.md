@@ -28,8 +28,8 @@
 * Dataset: Student/Interest Database
 
 # Technologies Used
-*SQL
-*MYSQL Command Line
+* SQL
+* MYSQL Command Line
 
 # By Anuj Agrawal
 
